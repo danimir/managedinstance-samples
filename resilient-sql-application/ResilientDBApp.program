@@ -17,16 +17,16 @@ namespace ResilientDBApp
 		static void Main(string[] args)
 		{
 			// Query executions and waits
-			int executions = 100;								// how many executions
-			int sleeptime = 2;                                  // wait time between executions (seconds)
+			int executions = 100;				// how many executions
+			int sleeptime = 2;                              // wait time between executions (seconds)
 
 			// Connection parameters and resiliency options
-			string InstanceConnectionString = "ConnMI2";	// connection string to SQL MI
-			bool ResilientQuery = true;						// execute resilient, or non-resilient query to transient errors (retry logic true/false)
+			string InstanceConnectionString = "ConnMI1";	// connection string to SQL MI
+			bool ResilientQuery = true;			// execute resilient, or non-resilient query to transient errors (retry logic true/false)
 
 			// Query text to execute
 			string SQLtext = "INSERT INTO timetable (datestamp) VALUES (CURRENT_TIMESTAMP);";
-			bool ReadBack = false;                              // read query response from SQL MI
+			bool ReadBack = false;                          // read query response from SQL MI - if using SELECT statements
 
 			try
 			{
@@ -157,7 +157,7 @@ namespace ResilientDBApp
 		}
 
 		// Build connection string to the server
-    // ADD your SQL MI server details into App.config,
+		// ADD your SQL MI server details into App.config,
 		// OR manuall edit the four string values - DataSource, InitialCatalog, UserID, Password with your SQL MI connection details
 		static private string GetSqlConnectionString(string instance)
 		{
